@@ -2,7 +2,7 @@
 
 This is an project for [Leaflet JS](https://leafletjs.com) and [OpenStreetMap](https://www.openstreetmap.org) built with Laravel 6.0.
 
-![Laravel Leaflet JS Project Example](public/uploads/capture.png)
+![Laravel Leaflet JS Project Example](public/screenshots/capture.PNG)
 
 ## Features
 
