@@ -1,40 +1,12 @@
-# Laravel Leaflet JS - Example
+# Laravel Leaflet JS - Aplikasi Dirosa
 
-This is an example project for [Leaflet JS](https://leafletjs.com) and [OpenStreetMap](https://www.openstreetmap.org) built with Laravel 5.8.
+This is an project for [Leaflet JS](https://leafletjs.com) and [OpenStreetMap](https://www.openstreetmap.org) built with Laravel 6.0.
 
-![Laravel Leaflet JS Project Example](public/screenshots/leaflet-map-01.jpg)
+![Laravel Leaflet JS Project Example](public/uploads/capture.png)
 
 ## Features
 
-In this project, we have an Outlet Management (CRUD) with localtion/coordinate point that shown in map. We also have coordinate entry with direct map pointing on Outlet Create and Edit form.
-
-## Installation Steps
-
-Follow this instructions to install the project:
-
-1. Clone this repo.
-    ```bash
-    $ git clone git@github.com:nafiesl/laravel-leaflet-example.git
-    # or
-    $ git clone https://github.com/nafiesl/laravel-leaflet-example.git
-    ```
-2. `$ cd laravel-leaflet-example`
-3. `$ composer install`
-4. `$ cp .env.example .env`
-5. `$ php artisan key:generate`
-6. Set **database config** on `.env` file
-7. `$ php artisan migrate`
-8. `$ php artisan serve`
-10. Open `https://localhost:8000` with browser.
-
-### Demo Records
-
-If we need some outlet demo records, we can use model factory within tinker:
-
-```bash
-$ php artisan tinker
->>> factory(App\Outlet::class, 30)->create();
-```
+In this project, we have an Halaqah Dirosa Management (CRUD) with localtion/coordinate point that shown in map. We also have coordinate entry with direct map pointing on Outlet Create and Edit form.
 
 ### Leaflet config
 
@@ -52,14 +24,6 @@ return [
 ```
 
 > Please note that this is not an official or required config file from Leaflet JS, it is just a custom config for this project.
-
-## Testing
-
-Run PHPUnit to run feature test:
-
-```bash
-$ vendor/bin/phpunit
-```
 
 ## License
 
