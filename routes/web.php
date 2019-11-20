@@ -38,5 +38,11 @@ Route::group(['namespace' => 'Murobbi'], function () {
             Route::put('/update/{id?}', 'HalaqahController@update')->name('halaqah.update');
             Route::get('/delete/{id?}', 'HalaqahController@delete')->name('halaqah.delete');
         });
+
+        // Profile
+        Route::group(['prefix' => 'profile'], function () {
+            Route::get('/', 'ProfileController@edit')->name('profile.edit');
+            Route::put('/update', 'ProfileController@update')->name('profile.update');
+        });
     });
 });

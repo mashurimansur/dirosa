@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="wrapper-md">
+            {{-- <div class="wrapper-md">
                 <!-- users -->
                 <div class="row">
                     <div class="col-md-6">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <!-- / users -->
-            </div>
+            </div> --}}
         </div>
         <!-- / main -->
     </div>
@@ -154,7 +154,6 @@
 
     <script>
         var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }}, {{ config('leaflet.map_center_longitude') }}], {{ config('leaflet.zoom_level') }});
-        // var baseUrl = "{{ url('/') }}";
         var baseUrl = "{{ route('dashboard.index') }}";
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

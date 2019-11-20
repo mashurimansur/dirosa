@@ -61,38 +61,31 @@
                         <a href="{{ route('dashboard.index') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
                             <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                            <span class="font-bold">Dashobard</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('halaqah.index') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
-                            <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                            <span class="font-bold">Halaqah</span>
+                            <i class="glyphicon glyphicon-home icon text-info-lter"></i>
+                            <span>Halaqah</span>
                         </a>
                     </li>
                     <li class="line dk"></li>
 
 
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                        <span>Your Stuff</span>
+                        <span>Setting</span>
                     </li>
                     <li>
-                        <a href="page_profile.html">
+                        <a href="{{ route('profile.edit') }}">
                             <i class="icon-user icon text-success-lter"></i>
-                            <b class="badge bg-success pull-right">30%</b>
+                            {{-- <b class="badge bg-success pull-right">30%</b> --}}
                             <span>Profile</span>
                         </a>
                     </li>
-                    {{-- <li>
-                        <a href>
-                            <i class="icon-question icon"></i>
-                            <span>Documents</span>
-                        </a>
-                    </li> --}}
                 </ul>
             </nav>
-            <!-- nav -->
         </div>
     </div>
 </aside>
