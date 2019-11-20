@@ -18,10 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
-    /*
-     * Outlets Endpoints
-     */
+    // Outlets Endpoints
     Route::get('outlets', 'OutletController@index')->name('outlets.index');
 
+    // Halaqah Endpoints
     Route::get('halaqah', 'HalaqahController@getData')->name('halaqah.index');
 });

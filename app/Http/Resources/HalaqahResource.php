@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Halaqah extends JsonResource
+class HalaqahResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -12,9 +12,7 @@ class Halaqah extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
-    {
-        // return parent::toArray($request);
+    public function toArray($request) {
         return [
             'id' => $this->id,
             'name' => $this->name,

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Halaqah;
 use Illuminate\Http\Request;
-use App\Http\Resources\Halaqah as HalaqahResource;
+use App\Http\Resources\HalaqahResource;
 
 class HalaqahController extends Controller
 {
