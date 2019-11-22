@@ -1,6 +1,7 @@
 @extends('murobbi.layouts.main')
 
 @section('content')
+    <a href="{{ route('halaqah.create') }}" class="new-btn" title="Tambah Halaqah"><i class="glyphicon glyphicon-pencil"></i></a>
     <div class="bg-light lter b-b wrapper-md">
         <h1 class="m-n font-thin h3">Halaqah</h1>
     </div>
@@ -9,7 +10,7 @@
         <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="label bg-danger pull-right m-t-xs"><a href="{{ route('halaqah.create') }}">Tambah Data</a></span>
+                    {{-- <span class="label bg-danger pull-right m-t-sm"><a href="{{ route('halaqah.create') }}">Tambah Data</a></span> --}}
                     Tasks
                 </div>
                 <table class="table table-striped m-b-none">
@@ -46,6 +47,11 @@
                                     @else
                                         <button disabled="disabled" class="btn btn-success btn-sm">Buka</button>
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('halaqah.detail', ['id' => $h->id]) }}" class="btn btn-default btn-sm">
+                                        Detail
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

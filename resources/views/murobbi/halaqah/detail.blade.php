@@ -32,8 +32,8 @@
                             </tbody>
                         </table>
                         <div class="wrapper bg-white">
-                            <a href="{{ route('halaqah.edit', ['id' => $halaqah->id]) }}" class="btn btn-primary btn-sm">Edit Halaqah</a>
-                            <a href="{{ route('halaqah.delete', ['id' => $halaqah->id]) }}" class="btn btn-danger btn-sm">Hapus Halaqah</a>
+                            <a href="{{ route('halaqah.edit', ['id' => $halaqah->id]) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">Hapus</button>
                         </div>
                     </div>
                 </div>
@@ -81,6 +81,27 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('modal')
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Hapus Halaqah</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id">
+                    Apakah Anda yakin ingin menghapus halaqah ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+                    <a href="{{ route('halaqah.delete', ['id' => $halaqah->id]) }}" type="submit" class="btn btn-danger">Ya</a>
+                </div>
+            </div>
+		</div>
+	</div>
 @endsection
 
 @section('styles')

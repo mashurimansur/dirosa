@@ -26,14 +26,16 @@ class HalaqahResource extends JsonResource
             'start_registration' => $this->start_registration,
             'end_registration' => $this->end_registration,
             'map_popup_content' => $this->content($this),
+            'murobbi' => $this->murobbi,
         ];
     }
 
     public function content($data) {
         $mapPopupContent = '';
         $mapPopupContent .= '<div class="my-2"><strong>Halaqah Name :</strong><br>'.$data->name.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>Coordinate :</strong><br>'.$data->latitude.' - '.$data->longitude.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>Nama Murobbi :</strong><br>'.$data->murobbi->name.'</div>';
         $mapPopupContent .= '<div class="my-2"><strong>Location :</strong><br>'.$data->location.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>Coordinate :</strong><br>'.$data->latitude.' - '.$data->longitude.'</div>';
 
         return $mapPopupContent;
     }

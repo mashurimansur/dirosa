@@ -10,7 +10,7 @@ use App\Http\Resources\HalaqahResource;
 class HalaqahController extends Controller
 {
     public function getData(Request $request) {
-        $halaqah = Halaqah::all();
+        $halaqah = Halaqah::with('murobbi')->get();
 
         $geoJSONData = $halaqah->map(function ($halaqah){
             return [

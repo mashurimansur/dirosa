@@ -30,6 +30,7 @@
         </div>
 
         @include('murobbi.layouts.partials.scripts')
+        @yield('modal')
         @stack('scripts')
     </body>
 </html>
