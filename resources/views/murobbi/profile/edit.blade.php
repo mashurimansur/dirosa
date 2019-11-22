@@ -6,6 +6,21 @@
 	</div>
 	<div class="wrapper-md">
 		<div class="row">
+        <div class="col-md-12">
+                @if (count($errors) > 0)
+                    <div class="alert-top alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
 			<div class="col-md-6">
 				<div class="panel">
 					<div class="panel-body">
@@ -93,22 +108,6 @@
                     </div>
                 </div>
             </div>
-
-			<div class="col-md-4">
-				@if (count($errors) > 0)
-					<div class="alert-top alert alert-danger">
-						<button type="button" class="close" data-dismiss="alert">
-							<span aria-hidden="true">&times;</span>
-							<span class="sr-only">Close</span>
-						</button>
-						<ul>
-							@foreach ($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
-				@endif
-			</div>
 		</div>
 	</div>
 @endsection
