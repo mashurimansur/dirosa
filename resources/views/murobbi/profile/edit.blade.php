@@ -6,7 +6,7 @@
 	</div>
 	<div class="wrapper-md">
 		<div class="row">
-        <div class="col-md-12">
+            <div class="col-md-12">
                 @if (count($errors) > 0)
                     <div class="alert-top alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert">

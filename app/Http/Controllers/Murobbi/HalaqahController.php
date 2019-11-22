@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Murobbi;
-use App\Models\Halaqah;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Halaqah;
 use Auth;
+use Illuminate\Http\Request;
 
 class HalaqahController extends Controller
 {
@@ -13,22 +14,39 @@ class HalaqahController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['halaqah'] = Halaqah::where('user_id', Auth::user()->id)->with('users')->get();
 
         return view('murobbi.halaqah.index', $data);
     }
 
-    public function detail($id) {
+    public function detail($id)
+    {
         $data['halaqah'] = Halaqah::where('id', $id)->with('users')->first();
         return view('murobbi.halaqah.detail', $data);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('murobbi.halaqah.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:5|max:30',
+            'user_id' => 'required',
+            'tiers' => 'required',
+            'day' => 'required',
+            'hour' => 'required',
+            'location' => 'required',
+            'latitude' => 'required|',
+            'longitude' => 'required',
+            'start_registration' => 'required|date',
+            'end_registration' => 'required|date',
+        ]);
+
         $halaqah = new Halaqah();
         $halaqah->name = $request->name;
         $halaqah->user_id = $request->user_id;
@@ -45,12 +63,28 @@ class HalaqahController extends Controller
         return redirect()->route('halaqah.index');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $data['halaqah'] = Halaqah::where('id', $id)->with('users')->First();
+
         return view('murobbi.halaqah.edit', $data);
     }
 
-    public function update($id, Request $request) {
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:5|max:30',
+            'user_id' => 'required',
+            'tiers' => 'required',
+            'day' => 'required',
+            'hour' => 'required',
+            'location' => 'required',
+            'latitude' => 'required|',
+            'longitude' => 'required',
+            'start_registration' => 'required|date',
+            'end_registration' => 'required|date',
+        ]);
+
         $halaqah = Halaqah::find($id);
         $halaqah->name = $request->name;
         $halaqah->user_id = $request->user_id;
@@ -67,7 +101,8 @@ class HalaqahController extends Controller
         return redirect()->route('halaqah.detail', ['id' => $halaqah->id]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $halaqah = Halaqah::find($id);
         $halaqah->delete();
 
