@@ -4,21 +4,23 @@ namespace App\Http\Controllers\Murobbi;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function edit() {
+    public function edit()
+    {
         $data['user'] = User::find(Auth::user()->id);
 
         return view('murobbi.profile.edit', $data);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $request->validate([
             'name' => 'required|min:5|max:30',
-            'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
             'gender' => 'required',
             'phone' => 'required',
             'latitude' => 'required',
@@ -36,16 +38,16 @@ class ProfileController extends Controller
         // $user->role = $request->role;
         $user->address = $request->address;
 
-        if($request->hasfile('image')){
+        if ($request->hasfile('image')) {
             $file = $request->file('image');
             $destinationPath = 'uploads';
             $extension = $file->getClientOriginalExtension();
-            $filename = rand(111111,999999).".".$extension;
+            $filename = rand(111111, 999999) . "." . $extension;
             $file->move($destinationPath, $filename);
             $user->image = $filename;
         }
 
-        if($request->password != '') {
+        if ($request->password != '') {
             $user->password = $request->password;
         }
         $user->save();
