@@ -6,8 +6,7 @@ This is an project for [Leaflet JS](https://leafletjs.com) and [OpenStreetMap](h
 
 ## Features
 
-In this project, we have an Halaqah Dirosa Management (CRUD) with localtion/coordinate point that shown in map. We also have coordinate entry with direct map pointing on Outlet Create and Edit form.
-
+In this project, we have an Halaqah Dirosa Management (CRUD) with localtion/coordinate point that shown in map.
 ### Leaflet config
 
 We have a `config/leaflet.php` file in this project. Set default **zoom level** and **map center** coordinate here (or in `.env` file).
