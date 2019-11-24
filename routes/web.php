@@ -11,18 +11,20 @@
 |
 */
 
-Route::get('/', 'OutletMapController@index');
+// Route::get('/', 'OutletMapController@index');
+// Route::get('/our_outlets', 'OutletMapController@index')->name('outlet_map.index');
+// Route::resource('outlets', 'OutletController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*
- * Outlets Routes
- */
-Route::get('/our_outlets', 'OutletMapController@index')->name('outlet_map.index');
-Route::resource('outlets', 'OutletController');
+// Front
+Route::group(['namespace' => 'Front'], function () {
+    Route::get('/', 'HomeController@index');
+});
 
+// Murobbi
 Route::group(['namespace' => 'Murobbi'], function () {
     Route::group(['prefix' => 'murobbi'], function () {
         // Dashboard
