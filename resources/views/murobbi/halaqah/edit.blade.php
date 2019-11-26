@@ -28,7 +28,6 @@
                     <div class="panel-body">
                         <form role="form" method="POST" action="{{ route('halaqah.update', ['id' => $halaqah->id]) }}">
                             {{ csrf_field() }} {{ method_field('PUT') }}
-                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <div class="form-group">
                                 <label>Nama Halaqah</label>
                                 <input type="text" name="name" class="form-control" value="{{ $halaqah->name }}" placeholder="Nama Halaqah">

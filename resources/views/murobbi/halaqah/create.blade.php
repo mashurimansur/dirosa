@@ -28,7 +28,6 @@
                     <div class="panel-body">
                         <form role="form" method="POST" action="{{ route('halaqah.store') }}">
                             {{ csrf_field() }}
-                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <div class="form-group">
                                 <label>Nama Halaqah</label>
                                 <input type="text" name="name" class="form-control" placeholder="Nama Halaqah">

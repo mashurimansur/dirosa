@@ -19,7 +19,8 @@ class CreateHalaqahTable extends Migration
             $table->integer('user_id');
             $table->string('tiers', 20);
             $table->string('day', 10);
-            $table->time('hour');            
+            $table->time('hour');
+            $table->enum('gender', ['l', 'p']);
             $table->string('location', 50);
             $table->string('latitude', 100);
             $table->string('longitude', 100);

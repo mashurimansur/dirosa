@@ -36,7 +36,6 @@ class HalaqahController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5|max:30',
-            'user_id' => 'required',
             'tiers' => 'required',
             'day' => 'required',
             'hour' => 'required',
@@ -49,7 +48,8 @@ class HalaqahController extends Controller
 
         $halaqah = new Halaqah();
         $halaqah->name = $request->name;
-        $halaqah->user_id = $request->user_id;
+        $halaqah->user_id = Auth::user()->id;
+        $halaqah->gender = Auth::user()->gender;
         $halaqah->tiers = $request->tiers;
         $halaqah->day = $request->day;
         $halaqah->hour = $request->hour;
@@ -74,7 +74,6 @@ class HalaqahController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5|max:30',
-            'user_id' => 'required',
             'tiers' => 'required',
             'day' => 'required',
             'hour' => 'required',
@@ -87,7 +86,8 @@ class HalaqahController extends Controller
 
         $halaqah = Halaqah::find($id);
         $halaqah->name = $request->name;
-        $halaqah->user_id = $request->user_id;
+        $halaqah->user_id = Auth::user()->id;
+        $halaqah->gender = Auth::user()->gender;
         $halaqah->tiers = $request->tiers;
         $halaqah->day = $request->day;
         $halaqah->hour = $request->hour;

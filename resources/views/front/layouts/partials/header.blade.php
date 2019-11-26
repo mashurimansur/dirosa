@@ -51,28 +51,42 @@
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-                    <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                        <img src="{{ asset('murobbi') }}/img/a0.jpg" alt="...">
-                        <i class="on md b-white bottom"></i>
-                    </span>
-                    <span class="hidden-sm hidden-md">Hury</span> <b class="caret"></b>
-                </a>
-                <!-- dropdown -->
-                <ul class="dropdown-menu animated fadeInRight w">
-                    <li>
-                        <a href>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a ui-sref="access.signin">Logout</a>
-                    </li>
-                </ul>
-                <!-- / dropdown -->
-            </li>
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            @else
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                            <img src="{{ asset('uploads') }}/{{ Auth::user()->image }}" alt="...">
+                            <i class="on md b-white bottom"></i>
+                        </span>
+                        <span class="hidden-sm hidden-md">{{ Auth::user()->name }}</span> <b class="caret"></b>
+                    </a>
+                    <!-- dropdown -->
+                    <ul class="dropdown-menu animated fadeInRight w">
+                        <li>
+                            {{-- <a ui-sref="access.signin">Logout</a> --}}
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- / dropdown -->
+                </li>
+            @endguest
         </ul>
         <!-- / navbar right -->
     </div>

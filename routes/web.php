@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', 'OutletMapController@index');
-// Route::get('/our_outlets', 'OutletMapController@index')->name('outlet_map.index');
-// Route::resource('outlets', 'OutletController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

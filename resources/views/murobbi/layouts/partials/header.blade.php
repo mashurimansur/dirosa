@@ -33,7 +33,6 @@
         <!-- / buttons -->
 
         <ul class="nav navbar-nav navbar-right">
-
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
@@ -44,22 +43,6 @@
                 </a>
                 <!-- dropdown -->
                 <ul class="dropdown-menu animated fadeInRight w">
-                    {{-- <li>
-                        <a href>
-                            <span class="badge bg-danger pull-right">30%</span>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a ui-sref="app.page.profile">Profile</a>
-                    </li>
-                    <li>
-                        <a ui-sref="app.docs">
-                            <span class="label bg-info pull-right">new</span>
-                            Help
-                        </a>
-                    </li> --}}
-                    {{-- <li class="divider"></li> --}}
                     <li>
                         {{-- <a ui-sref="access.signin">Logout</a> --}}
                         <a class="dropdown-item" href="{{ route('logout') }}"

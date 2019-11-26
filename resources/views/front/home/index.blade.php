@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-xs-12">
                         <h1 class="m-n font-thin h3 text-black">Home</h1>
-                        <small class="text-muted">Welcome to angulr application</small>
+                        <small class="text-muted">Selamat datang di aplikasi pencarian guru mengaji dirosa</small>
                     </div>
                 </div>
             </div>
@@ -20,60 +20,20 @@
 
                     <div class="col-md-12">
                         <div class="list-group list-group-lg list-group-sp">
-                            <a herf class="list-group-item clearfix">
-                                <span class="pull-left thumb-sm avatar m-r">
-                                    <img src="{{ asset('murobbi') }}/img/a4.jpg" alt="...">
-                                    <i class="on b-white right"></i>
-                                </span>
-                                <span class="clear">
-                                    <span>Chris Fox</span>
-                                    <span class="pull-right label bg-primary inline m-t-sm">7km</span>
-                                    <small class="text-muted clear text-ellipsis">What's up, buddy</small>
-                                </span>
-                            </a>
-                            <a herf class="list-group-item clearfix">
-                                <span class="pull-left thumb-sm avatar m-r">
-                                    <img src="{{ asset('murobbi') }}/img/a5.jpg" alt="...">
-                                    <i class="on b-white right"></i>
-                                </span>
-                                <span class="clear">
-                                    <span>Amanda Conlan</span>
-                                    <small class="text-muted clear text-ellipsis">Come online and we need
-                                        talk about the plans that we have discussed</small>
-                                </span>
-                            </a>
-                            <a herf class="list-group-item clearfix">
-                                <span class="pull-left thumb-sm avatar m-r">
-                                    <img src="{{ asset('murobbi') }}/img/a6.jpg" alt="...">
-                                    <i class="busy b-white right"></i>
-                                </span>
-                                <span class="clear">
-                                    <span>Dan Doorack</span>
-                                    <small class="text-muted clear text-ellipsis">Hey, Some good
-                                        news</small>
-                                </span>
-                            </a>
-                            <a herf class="list-group-item clearfix">
-                                <span class="pull-left thumb-sm avatar m-r">
-                                    <img src="{{ asset('murobbi') }}/img/a7.jpg" alt="...">
-                                    <i class="busy b-white right"></i>
-                                </span>
-                                <span class="clear">
-                                    <span>Lauren Taylor</span>
-                                    <small class="text-muted clear text-ellipsis">Nice to talk with
-                                        you.</small>
-                                </span>
-                            </a>
-                            <a herf class="list-group-item clearfix">
-                                <span class="pull-left thumb-sm avatar m-r">
-                                    <img src="{{ asset('murobbi') }}/img/a8.jpg" alt="...">
-                                    <i class="away b-white right"></i>
-                                </span>
-                                <span class="clear">
-                                    <span>Mike Jackson</span>
-                                    <small class="text-muted clear text-ellipsis">This is nice</small>
-                                </span>
-                            </a>
+                            @foreach ($halaqah as $h)
+                                <a href="#" class="list-group-item clearfix">
+                                    <span class="pull-left thumb-sm avatar m-r">
+                                        <img src="{{ asset('uploads') }}/{{ $h->murobbi->image }}" alt="...">
+                                        <i class="on b-white right"></i>
+                                    </span>
+                                    <span class="clear">
+                                        <span>{{ $h->name }} - {{ $h->murobbi->name }}</span>
+                                        <span class="pull-right label bg-primary inline m-t-sm">0 km</span>
+                                        <small class="text-muted clear text-ellipsis">{{ $h->day }} - {{ $h->hour }}</small>
+                                        <small class="text-muted clear text-ellipsis">Tingkatan {{ $h->tiers }}</small>
+                                    </span>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
