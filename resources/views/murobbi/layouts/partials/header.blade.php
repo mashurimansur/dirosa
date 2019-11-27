@@ -8,7 +8,7 @@
             <i class="glyphicon glyphicon-align-justify"></i>
         </button>
         <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
+        <a href="{{ route('dashboard.index') }}" class="navbar-brand text-lt">
             {{-- <i class="fa fa-btc"></i> --}}
             <img src="{{ asset('uploads') }}/icons/808358.png" alt=".">
             <span class="hidden-folded m-l-xs">Dirosa</span>

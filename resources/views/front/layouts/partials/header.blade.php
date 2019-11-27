@@ -8,10 +8,10 @@
             <i class="glyphicon glyphicon-align-justify"></i>
         </button>
         <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-            <i class="fa fa-btc"></i>
-            <img src="{{ asset('murobbi') }}/img/logo.png" alt="." class="hide">
-            <span class="hidden-folded m-l-xs">Angulr</span>
+        <a href="{{ route('front.home') }}" class="navbar-brand text-lt">
+            {{-- <i class="fa fa-btc"></i> --}}
+            <img src="{{ asset('uploads') }}/icons/808358.png" alt=".">
+            <span class="hidden-folded m-l-xs">Dirosa</span>
         </a>
         <!-- / brand -->
     </div>
@@ -25,14 +25,14 @@
                 <i class="fa fa-dedent fa-fw text"></i>
                 <i class="fa fa-indent fa-fw text-active"></i>
             </a>
-            <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            {{-- <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
                 <i class="icon-user fa-fw"></i>
-            </a>
+            </a> --}}
         </div>
         <!-- / buttons -->
 
         <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo"
+        {{-- <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo"
             data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
             <div class="form-group">
                 <div class="input-group">
@@ -46,7 +46,7 @@
                     </span>
                 </div>
             </div>
-        </form>
+        </form> --}}
         <!-- / search form -->
 
         <!-- nabar right -->

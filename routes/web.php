@@ -17,7 +17,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Front
 Route::group(['namespace' => 'Front'], function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('front.home');
+    Route::get('/halaqah/{id?}', 'HomeController@detailHalaqah')->name('front.halaqah.detail');
 });
 
 // Murobbi

@@ -21,7 +21,7 @@
                     <div class="col-md-12">
                         <div class="list-group list-group-lg list-group-sp">
                             @foreach ($halaqah as $h)
-                                <a href="#" class="list-group-item clearfix">
+                                <a href="{{ route('front.halaqah.detail', ['id' => $h->id]) }}" class="list-group-item clearfix">
                                     <span class="pull-left thumb-sm avatar m-r">
                                         <img src="{{ asset('uploads') }}/{{ $h->murobbi->image }}" alt="...">
                                         <i class="on b-white right"></i>
@@ -43,7 +43,7 @@
         <!-- / main -->
         <!-- right col -->
         <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
-            <div data-ng-include=" 'tpl/blocks/aside.right.html' ">
+            <div>
 
             </div>
         </div>
