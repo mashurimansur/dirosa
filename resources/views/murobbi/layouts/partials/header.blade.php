@@ -10,7 +10,7 @@
         <!-- brand -->
         <a href="{{ route('dashboard.index') }}" class="navbar-brand text-lt">
             {{-- <i class="fa fa-btc"></i> --}}
-            <img src="{{ asset('uploads') }}/icons/808358.png" alt=".">
+            {{-- <img src="{{ asset('uploads') }}/icons/808358.png" alt="."> --}}
             <span class="hidden-folded m-l-xs">Dirosa</span>
         </a>
         <!-- / brand -->

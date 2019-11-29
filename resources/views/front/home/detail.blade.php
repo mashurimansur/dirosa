@@ -18,8 +18,24 @@
                                 <td>{{ $halaqah->name }}</td>
                             </tr>
                             <tr>
+                                <th>Nama Murobbi :</th>
+                                <td>{{ $halaqah->murobbi->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>No. Telepon :</th>
+                                <td>{{ $halaqah->murobbi->phone }}</td>
+                            </tr>
+                            <tr>
                                 <th>Hari / Jam :</th>
                                 <td>{{ $halaqah->day }} / {{ $halaqah->hour }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total Peserta :</th>
+                                <td>{{ count($halaqah->users) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Jarak :</th>
+                                <td id="jarak"></td>
                             </tr>
                             <tr>
                                 <th>Lokasi :</th>
@@ -32,8 +48,7 @@
                         </tbody>
                     </table>
                     <div class="wrapper bg-white">
-                        <a href="{{ route('halaqah.edit', ['id' => $halaqah->id]) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete">Hapus</button>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-delete">Gabung Halaqah</button>
                     </div>
                 </div>
             </div>
@@ -92,7 +107,6 @@
 
         <script>
             var map = L.map('mapid');
-            // var map = L.map('mapid').setView([57.74, 11.94], {{ config('leaflet.detail_zoom_level') }});
 
             L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
                 attribution: '© OpenStreetMap contributors'
@@ -127,7 +141,7 @@
                 var a = Math.pow(Math.sin(deltaLat/2), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(deltaLon/2), 2);
                 var c = 2 * Math.asin(Math.sqrt(a));
                 var EARTH_RADIUS = 6371;
-                return c * EARTH_RADIUS * 1000;
+                return c * EARTH_RADIUS;
             }
 
             function toRadian(degree) {
@@ -135,8 +149,9 @@
             }
 
             var distance = getDistance([{{ Auth::user()->latitude }}, {{ Auth::user()->longitude }}], [{{ $halaqah->latitude }}, {{ $halaqah->longitude }}])
-            console.log("ini cek jarak");
+            console.log("cek jarak dari rumus, ini bisa di cek offline");
             console.log(distance);
+            document.getElementById("jarak").innerHTML = distance.toFixed(2) + " km";
         </script>
     @endpush
 

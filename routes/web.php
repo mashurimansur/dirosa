@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Middleware\MurobbiMiddleware;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -19,10 +21,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('front.home');
     Route::get('/halaqah/{id?}', 'HomeController@detailHalaqah')->name('front.halaqah.detail');
+
+    //About
+    Route::get('/tentang', 'HomeController@about')->name('front.about.index');
+
+    // Profile
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', 'HomeController@editProfile')->name('front.profile.edit');
+        Route::put('/update', 'HomeController@updateProfile')->name('front.profile.update');
+    });
 });
 
 // Murobbi
-Route::group(['namespace' => 'Murobbi'], function () {
+Route::group(['namespace' => 'Murobbi', 'middleware' => MurobbiMiddleware::class], function () {
     Route::group(['prefix' => 'murobbi'], function () {
         // Dashboard
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');

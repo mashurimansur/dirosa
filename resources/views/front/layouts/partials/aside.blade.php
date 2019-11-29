@@ -60,7 +60,7 @@
                         <span>Navigation</span>
                     </li>
                     <li>
-                        <a href="mail.html">
+                        <a href="{{ route('front.home') }}">
                             <i class="glyphicon glyphicon-home icon text-primary-dker"></i>
                             <span class="font-bold">Home</span>
                         </a>
@@ -76,14 +76,14 @@
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span>Setting</span>
                     </li>
-                    <li>
-                        <a href="page_profile.html">
+                    <li {{ Request::is('profile*') ? 'class=active' : '' }}>
+                        <a href="{{ route('front.profile.edit') }}">
                             <i class="icon-user icon text-success-lter"></i>
                             <span>Profile</span>
                         </a>
                     </li>
-                    <li>
-                        <a href>
+                    <li {{  Request::is('tentang*') ? 'class=active' : ''  }}>
+                        <a href="{{ route('front.about.index') }}">
                             <i class="icon-question icon"></i>
                             <span>Tentang</span>
                         </a>
