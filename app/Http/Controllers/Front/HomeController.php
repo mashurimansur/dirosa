@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Halaqah;
+use App\Models\HalaqahUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -59,8 +60,20 @@ class HomeController extends Controller
         return $data;
     }
 
+    public function halaqah()
+    {
+        if (Auth::guest()) {
+            return redirect()->route('login');
+        }
+
+        $data['user'] = User::where('id', Auth::user()->id)->with('halaqah')->first();
+
+        return view('front.halaqah.index', $data);
+    }
+
     public function detailHalaqah($id) {
         $data['halaqah'] = Halaqah::where('id', $id)->with('murobbi', 'users')->first();
+        $data['check'] = HalaqahUser::where('halaqah_id', $id)->where('user_id', Auth::user()->id)->count();
 
         return view('front.home.detail', $data);
     }
@@ -68,6 +81,9 @@ class HomeController extends Controller
     // Profile Setting
     public function editProfile()
     {
+        if (Auth::guest()) {
+            return redirect()->route('login');
+        }
         $data['user'] = User::find(Auth::user()->id);
 
         return view('front.profile.index', $data);
@@ -116,5 +132,25 @@ class HomeController extends Controller
     public function about()
     {
         return view('front.about.index');
+    }
+
+    public function registerMurobbi() {
+        return view('auth.registerMurobbi');
+    }
+
+    public function joinHalaqah(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'halaqah_id' => 'required'
+        ]);
+
+        $hu = new HalaqahUser();
+        $hu->user_id = $request->user_id;
+        $hu->halaqah_id = $request->halaqah_id;
+        $hu->save();
+
+        return redirect()->back();
+
     }
 }

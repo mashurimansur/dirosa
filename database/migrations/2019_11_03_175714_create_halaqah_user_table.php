@@ -17,7 +17,8 @@ class CreateHalaqahUserTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned()->nullable()->default(12);
             $table->integer('halaqah_id')->unsigned()->nullable()->default(12);
-            
+            $table->timestamps();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('halaqah_id')->references('id')->on('halaqah')->onDelete('cascade');
         });
