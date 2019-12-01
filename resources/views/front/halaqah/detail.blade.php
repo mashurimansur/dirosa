@@ -47,15 +47,18 @@
                             </tr>
                         </tbody>
                     </table>
-                    @if ($check > 0)
-                        <div class="wrapper bg-white">
-                            <button class="btn btn-success btn-sm">Anda telah bergabung</button>
-                        </div>
+                    @guest
                     @else
-                        <div class="wrapper bg-white">
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-delete">Gabung Halaqah</button>
-                        </div>
-                    @endif
+                        @if ($check > 0)
+                            <div class="wrapper bg-white">
+                                <button class="btn btn-success btn-sm">Anda telah bergabung</button>
+                            </div>
+                        @else
+                            <div class="wrapper bg-white">
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-delete">Gabung Halaqah</button>
+                            </div>
+                        @endif
+                    @endguest
                 </div>
             </div>
         </div>
@@ -69,31 +72,6 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('modal')
-    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Hapus Halaqah</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id">
-                    Apakah anda ingin bergabung di halaqah ini?
-                </div>
-                <div class="modal-footer">
-                    <form action="{{ route('front.halaqah.join') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="halaqah_id" value="{{ $halaqah->id }}">
-                        <button class="btn btn-primary">Ya</button>
-                    </form>
-                </div>
-            </div>
-		</div>
-	</div>
 @endsection
 
 @section('styles')
@@ -128,8 +106,36 @@
 
         L.marker([{{ $halaqah->latitude }}, {{ $halaqah->longitude }}]).addTo(map);
     </script>
+    <script>
+        document.getElementById("jarak").innerHTML = "Perhitungan jarak membutuhkan lokasi anda";
+    </script>
     @endpush
 @else
+    @section('modal')
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Hapus Halaqah</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id">
+                    Apakah anda ingin bergabung di halaqah ini?
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('front.halaqah.join') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <input type="hidden" name="halaqah_id" value="{{ $halaqah->id }}">
+                        <button class="btn btn-primary">Ya</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endsection
+
     @push('scripts')
         <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
         {{-- <script src="{{ asset('leaflet') }}/leaflet-routing-machine.js"></script> --}}

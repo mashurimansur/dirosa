@@ -60,6 +60,14 @@ class HomeController extends Controller
         return $data;
     }
 
+    public function filter()
+    {
+        $data['halaqah'] = Halaqah::with('murobbi')->limit(10)->get();
+
+        // return response()->json($data);
+        return view('front.home.filter', $data);
+    }
+
     public function halaqah()
     {
         if (Auth::guest()) {
@@ -73,9 +81,12 @@ class HomeController extends Controller
 
     public function detailHalaqah($id) {
         $data['halaqah'] = Halaqah::where('id', $id)->with('murobbi', 'users')->first();
-        $data['check'] = HalaqahUser::where('halaqah_id', $id)->where('user_id', Auth::user()->id)->count();
 
-        return view('front.home.detail', $data);
+        if (!Auth::guest()) {
+            $data['check'] = HalaqahUser::where('halaqah_id', $id)->where('user_id', Auth::user()->id)->count();
+        }
+
+        return view('front.halaqah.detail', $data);
     }
 
     // Profile Setting

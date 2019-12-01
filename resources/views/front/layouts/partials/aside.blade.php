@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="mail.html">
+                        <a href="{{ route('front.halaqah') }}">
                             <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
                             <span class="font-bold">Halaqah</span>
                         </a>

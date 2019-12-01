@@ -44,7 +44,52 @@
         <!-- right col -->
         <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
             <div>
+                    <div class="panel panel-default">
+                            <div class="panel-heading font-bold">Filter with Algoritma Floyd Warshall</div>
+                            <div class="panel-body">
+                                <form role="form" method="GET" action="{{ route('front.filter') }}">
+                                    {{ csrf_field() }}
+                                    <div class="form-group">
+                                        <label>Tingkatan</label>
+                                        <select name="tiers" id="" class="form-control">
+                                            <option value="">Semua Tingkatan</option>
+                                            <option value="pemula">Pemula</option>
+                                            <option value="menengah">Menengah</option>
+                                            <option value="mahir">Mahir</option>
+                                        </select>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label>Jenis Kelamin</label>
+                                        <select name="gender" id="" class="form-control">
+                                            <option value="l">Laki-Laki</option>
+                                            <option value="p">Perempuan</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Hari</label>
+                                        <select name="day" id="" class="form-control">
+                                            <option value="">Semua Hari</option>
+                                            <option value="Senin">Senin</option>
+                                            <option value="Selasa">Selasa</option>
+                                            <option value="Rabu">Rabu</option>
+                                            <option value="Kamis">Kamis</option>
+                                            <option value="Jumat">Jumat</option>
+                                            <option value="Sabtu">Sabtu</option>
+                                            <option value="Minggu">Minggu</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Waktu Dirosa</label>
+                                        <input type="time" name="hour" class="form-control" placeholder="Waktu Dirosa">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                                </form>
+                            </div>
+                        </div>
             </div>
         </div>
     <!-- / right col -->

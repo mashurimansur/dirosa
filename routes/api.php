@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
     // Halaqah Endpoints
     Route::get('halaqah', 'HalaqahController@getData')->name('halaqah.index');
+    Route::get('halaqah/filter', 'HalaqahController@getFilter')->name('halaqah.filter');
 });

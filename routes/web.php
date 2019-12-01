@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Front
 Route::group(['namespace' => 'Front'], function () {
     Route::get('/', 'HomeController@index')->name('front.home');
+    Route::get('/filter', 'HomeController@filter')->name('front.filter');
     Route::get('/halaqah', 'HomeController@halaqah')->name('front.halaqah');
     Route::get('/halaqah/{id?}', 'HomeController@detailHalaqah')->name('front.halaqah.detail');
     Route::post('halaqah/join', 'HomeController@joinHalaqah')->name('front.halaqah.join');
