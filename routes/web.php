@@ -58,5 +58,10 @@ Route::group(['namespace' => 'Murobbi', 'middleware' => MurobbiMiddleware::class
             Route::get('/', 'ProfileController@edit')->name('profile.edit');
             Route::put('/update', 'ProfileController@update')->name('profile.update');
         });
+
+        Route::group(['prefix' => 'kader'], function () {
+            Route::get('/user', 'KaderController@kader')->name('kader.kader');
+            Route::get('/murobbi', 'KaderController@murobbi')->name('kader.murobbi');
+        });
     });
 });

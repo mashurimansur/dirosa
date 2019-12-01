@@ -45,7 +45,7 @@
         <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
             <div>
                     <div class="panel panel-default">
-                            <div class="panel-heading font-bold">Filter with Algoritma Floyd Warshall</div>
+                            <div class="panel-heading font-bold">Filter with Algoritma <br>Floyd Warshall</div>
                             <div class="panel-body">
                                 <form role="form" method="GET" action="{{ route('front.filter') }}">
                                     {{ csrf_field() }}

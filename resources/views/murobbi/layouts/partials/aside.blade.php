@@ -43,6 +43,28 @@
                     </li>
                     <li class="line dk"></li>
 
+                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                        <span>Kader</span>
+                    </li>
+
+                    <li {{ Request::is('murobbi/kader/user') ? 'class=active' : '' }}>
+                        <a href="{{ route('kader.kader') }}">
+                            {{-- <b class="badge bg-info pull-right">9</b> --}}
+                            <i class="glyphicon glyphicon-user icon text-primary-lter"></i>
+                            <span>Data Kader/User</span>
+                        </a>
+                    </li>
+
+                    <li {{ Request::is('murobbi/kader/murobbi') ? 'class=active' : '' }}>
+                        <a href="{{ route('kader.murobbi') }}">
+                            {{-- <b class="badge bg-info pull-right">9</b> --}}
+                            <i class="glyphicon glyphicon-user icon text-success-lter"></i>
+                            <span>Data Murobbi</span>
+                        </a>
+                    </li>
+
+                    <li class="line dk"></li>
+
 
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span>Setting</span>
