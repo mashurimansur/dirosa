@@ -6,17 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Halaqah;
 use App\Models\HalaqahUser;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        if (Auth::guest()){
+    public function index()
+    {
+        if (Auth::guest()) {
             $data['halaqah'] = Halaqah::with('murobbi')
                 ->where('start_registration', '<=', date('Y-m-d'))
                 ->where('end_registration', '>=', date('Y-m-d'))
                 ->paginate(10);
+
             return view('front.home.indexNotSignin', $data);
 
         } else {
@@ -48,7 +50,8 @@ class HomeController extends Controller
         return view('front.halaqah.index', $data);
     }
 
-    public function detailHalaqah($id) {
+    public function detailHalaqah($id)
+    {
         $data['halaqah'] = Halaqah::where('id', $id)->with('murobbi', 'users')->first();
 
         if (!Auth::guest()) {
@@ -72,30 +75,30 @@ class HomeController extends Controller
     public function updateProfile(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5|max:30',
-            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
-            'gender' => 'required',
-            'phone' => 'required',
-            'latitude' => 'required',
+            'name'      => 'required|min:5|max:30',
+            'email'     => 'required|email|unique:users,email,' . Auth::user()->id,
+            'gender'    => 'required',
+            'phone'     => 'required',
+            'latitude'  => 'required',
             'longitude' => 'required',
-            'address' => 'required|max:150',
+            'address'   => 'required|max:150',
         ]);
 
-        $user = User::find(Auth::user()->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->gender = $request->gender;
-        $user->phone = $request->phone;
-        $user->latitude = $request->latitude;
+        $user            = User::find(Auth::user()->id);
+        $user->name      = $request->name;
+        $user->email     = $request->email;
+        $user->gender    = $request->gender;
+        $user->phone     = $request->phone;
+        $user->latitude  = $request->latitude;
         $user->longitude = $request->longitude;
         // $user->role = $request->role;
         $user->address = $request->address;
 
         if ($request->hasfile('image')) {
-            $file = $request->file('image');
+            $file            = $request->file('image');
             $destinationPath = 'uploads';
-            $extension = $file->getClientOriginalExtension();
-            $filename = rand(111111, 999999) . "." . $extension;
+            $extension       = $file->getClientOriginalExtension();
+            $filename        = rand(111111, 999999) . "." . $extension;
             $file->move($destinationPath, $filename);
             $user->image = $filename;
         }
@@ -114,19 +117,20 @@ class HomeController extends Controller
         return view('front.about.index');
     }
 
-    public function registerMurobbi() {
+    public function registerMurobbi()
+    {
         return view('auth.registerMurobbi');
     }
 
     public function joinHalaqah(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
-            'halaqah_id' => 'required'
+            'user_id'    => 'required',
+            'halaqah_id' => 'required',
         ]);
 
-        $hu = new HalaqahUser();
-        $hu->user_id = $request->user_id;
+        $hu             = new HalaqahUser();
+        $hu->user_id    = $request->user_id;
         $hu->halaqah_id = $request->halaqah_id;
         $hu->save();
 
@@ -136,8 +140,8 @@ class HomeController extends Controller
     public function outHalaqah(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
-            'halaqah_id' => 'required'
+            'user_id'    => 'required',
+            'halaqah_id' => 'required',
         ]);
 
         HalaqahUser::where('user_id', $request->user_id)->where('halaqah_id', $request->halaqah_id)->delete();

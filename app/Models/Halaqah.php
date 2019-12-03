@@ -8,11 +8,13 @@ class Halaqah extends Model
 {
     protected $table = 'halaqah';
 
-    public function users() {
+    public function users()
+    {
         return $this->belongsToMany(User::class);
     }
 
-    public function murobbi() {
+    public function murobbi()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 }

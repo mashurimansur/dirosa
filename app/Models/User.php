@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'latitude', 'longitude', 'address', 'image', 'phone'
+        'name', 'email', 'password', 'role', 'latitude', 'longitude', 'address', 'image', 'phone',
     ];
 
     /**
@@ -28,7 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function halaqah() {
+    public function halaqah()
+    {
         return $this->belongsToMany(Halaqah::class);
     }
 

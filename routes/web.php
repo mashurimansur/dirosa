@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 use App\Http\Middleware\MurobbiMiddleware;
 
@@ -44,7 +44,7 @@ Route::group(['namespace' => 'Murobbi', 'middleware' => MurobbiMiddleware::class
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
         //Halaqah
-        Route::group(['prefix' => 'halaqah'], function() {
+        Route::group(['prefix' => 'halaqah'], function () {
             Route::get('/', 'HalaqahController@index')->name('halaqah.index');
             Route::get('/detail/{id?}', 'HalaqahController@detail')->name('halaqah.detail');
             Route::get('/create', 'HalaqahController@create')->name('halaqah.create');

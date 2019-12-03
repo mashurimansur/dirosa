@@ -35,29 +35,29 @@ class HalaqahController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5|max:30',
-            'tiers' => 'required',
-            'day' => 'required',
-            'hour' => 'required',
-            'location' => 'required',
-            'latitude' => 'required|',
-            'longitude' => 'required',
+            'name'               => 'required|min:5|max:30',
+            'tiers'              => 'required',
+            'day'                => 'required',
+            'hour'               => 'required',
+            'location'           => 'required',
+            'latitude'           => 'required|',
+            'longitude'          => 'required',
             'start_registration' => 'required|date',
-            'end_registration' => 'required|date',
+            'end_registration'   => 'required|date',
         ]);
 
-        $halaqah = new Halaqah();
-        $halaqah->name = $request->name;
-        $halaqah->user_id = Auth::user()->id;
-        $halaqah->gender = Auth::user()->gender;
-        $halaqah->tiers = $request->tiers;
-        $halaqah->day = $request->day;
-        $halaqah->hour = $request->hour;
-        $halaqah->location = $request->location;
-        $halaqah->latitude = $request->latitude;
-        $halaqah->longitude = $request->longitude;
+        $halaqah                     = new Halaqah();
+        $halaqah->name               = $request->name;
+        $halaqah->user_id            = Auth::user()->id;
+        $halaqah->gender             = Auth::user()->gender;
+        $halaqah->tiers              = $request->tiers;
+        $halaqah->day                = $request->day;
+        $halaqah->hour               = $request->hour;
+        $halaqah->location           = $request->location;
+        $halaqah->latitude           = $request->latitude;
+        $halaqah->longitude          = $request->longitude;
         $halaqah->start_registration = $request->start_registration;
-        $halaqah->end_registration = $request->end_registration;
+        $halaqah->end_registration   = $request->end_registration;
         $halaqah->save();
 
         return redirect()->route('halaqah.index');
@@ -73,29 +73,29 @@ class HalaqahController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|min:5|max:30',
-            'tiers' => 'required',
-            'day' => 'required',
-            'hour' => 'required',
-            'location' => 'required',
-            'latitude' => 'required|',
-            'longitude' => 'required',
+            'name'               => 'required|min:5|max:30',
+            'tiers'              => 'required',
+            'day'                => 'required',
+            'hour'               => 'required',
+            'location'           => 'required',
+            'latitude'           => 'required|',
+            'longitude'          => 'required',
             'start_registration' => 'required|date',
-            'end_registration' => 'required|date',
+            'end_registration'   => 'required|date',
         ]);
 
-        $halaqah = Halaqah::find($id);
-        $halaqah->name = $request->name;
-        $halaqah->user_id = Auth::user()->id;
-        $halaqah->gender = Auth::user()->gender;
-        $halaqah->tiers = $request->tiers;
-        $halaqah->day = $request->day;
-        $halaqah->hour = $request->hour;
-        $halaqah->location = $request->location;
-        $halaqah->latitude = $request->latitude;
-        $halaqah->longitude = $request->longitude;
+        $halaqah                     = Halaqah::find($id);
+        $halaqah->name               = $request->name;
+        $halaqah->user_id            = Auth::user()->id;
+        $halaqah->gender             = Auth::user()->gender;
+        $halaqah->tiers              = $request->tiers;
+        $halaqah->day                = $request->day;
+        $halaqah->hour               = $request->hour;
+        $halaqah->location           = $request->location;
+        $halaqah->latitude           = $request->latitude;
+        $halaqah->longitude          = $request->longitude;
         $halaqah->start_registration = $request->start_registration;
-        $halaqah->end_registration = $request->end_registration;
+        $halaqah->end_registration   = $request->end_registration;
         $halaqah->save();
 
         return redirect()->route('halaqah.detail', ['id' => $halaqah->id]);

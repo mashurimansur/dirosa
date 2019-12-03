@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Murobbi;
 use App\Http\Controllers\Controller;
 use App\Models\Halaqah;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -14,8 +13,9 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-        $data['users'] = User::where('role', 'user')->count();
+    public function index()
+    {
+        $data['users']   = User::where('role', 'user')->count();
         $data['murobbi'] = User::where('role', 'murobbi')->count();
         $data['halaqah'] = Halaqah::count();
 
