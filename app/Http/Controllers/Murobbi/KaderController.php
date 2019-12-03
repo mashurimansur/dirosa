@@ -13,14 +13,30 @@ class KaderController extends Controller
         $this->middleware('auth');
     }
 
-    public function kader() {
-        $data['kader'] = User::where('role', 'user')->paginate(20);
+    public function kader(Request $request) {
+        $search = $request->input('search');
+        $kader = User::where('role', 'user');
+
+        if (!empty($search)) {
+            //We should filter gender
+            $kader->where('name', 'like', '%'.$search.'%');
+        }
+
+        $data['kader'] = $kader->paginate(20);
 
         return view('murobbi.kader.index', $data);
     }
 
-    public function murobbi() {
-        $data['kader'] = User::where('role', 'murobbi')->paginate(20);
+    public function murobbi(Request $request) {
+        $search = $request->input('search');
+        $kader = User::where('role', 'murobbi');
+
+        if (!empty($search)) {
+            //We should filter gender
+            $kader->where('name', 'like', '%'.$search.'%');
+        }
+
+        $data['kader'] = $kader->paginate(20);
 
         return view('murobbi.murobbi.index', $data);
     }

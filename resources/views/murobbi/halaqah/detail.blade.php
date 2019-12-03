@@ -9,12 +9,12 @@
         <div class="row">
             <div class="col-sm-7">
                 <div class="panel panel-default">
-                    <div class="panel-heading font-bold">Detail Halaqah</div>
+                    <div class="panel-heading font-bold">Detail Kelompok Dirosa</div>
                     <div class="panel-body">
                         <table class="table table-striped m-b-none">
                             <tbody>
                                 <tr>
-                                    <th>Nama Halaqah :</th>
+                                    <th>Nama Kelompok :</th>
                                     <td>{{ $halaqah->name }}</td>
                                 </tr>
                                 <tr>
@@ -89,11 +89,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Hapus Halaqah</h4>
+                    <h4 class="modal-title" id="myModalLabel">Hapus Kelompok Dirosa</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id">
-                    Apakah Anda yakin ingin menghapus halaqah ini?
+                    Apakah Anda yakin ingin menghapus kelompok ini?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>

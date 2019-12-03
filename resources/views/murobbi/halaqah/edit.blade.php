@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-light lter b-b wrapper-md">
-        <h1 class="m-n font-thin h3">Edit Halaqah</h1>
+        <h1 class="m-n font-thin h3">Ubah Kelompok Dirosa</h1>
     </div>
 
     <div class="wrapper-md" ng-controller="FormDemoCtrl">
@@ -29,7 +29,7 @@
                         <form role="form" method="POST" action="{{ route('halaqah.update', ['id' => $halaqah->id]) }}">
                             {{ csrf_field() }} {{ method_field('PUT') }}
                             <div class="form-group">
-                                <label>Nama Halaqah</label>
+                                <label>Nama Kelompok</label>
                                 <input type="text" name="name" class="form-control" value="{{ $halaqah->name }}" placeholder="Nama Halaqah">
                             </div>
                             <div class="form-group">

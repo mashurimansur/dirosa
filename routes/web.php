@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Front'], function () {
 
 // Murobbi
 Route::group(['namespace' => 'Murobbi', 'middleware' => MurobbiMiddleware::class], function () {
-    Route::group(['prefix' => 'murobbi'], function () {
+    Route::group(['prefix' => 'mudarris'], function () {
         // Dashboard
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 

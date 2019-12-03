@@ -3,6 +3,18 @@
 @section('content')
     <a href="{{ route('halaqah.create') }}" class="new-btn" title="Tambah Halaqah"><i class="glyphicon glyphicon-pencil"></i></a>
     <div class="bg-light lter b-b wrapper-md">
+            <div>
+                <form method="GET" action="{{ route('kader.kader') }}" class="navbar-form navbar-form-xs navbar-right shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" ng-model="selected" name="search" value="{{ Request::input('search') }}" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Cari Mudarris">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
         <h1 class="m-n font-thin h3">Data Kader</h1>
     </div>
 

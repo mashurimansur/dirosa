@@ -11,15 +11,15 @@
             <div class="wrapper-md bg-white-only b-b">
                 <div class="row text-center">
                     <div class="col-sm-4 col-xs-6">
-                        <div>Total Users</div>
+                        <div>Total Kader/Users</div>
                         <div class="h2 m-b-sm">{{ $users }}</div>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <div>Total Murobbi</div>
+                        <div>Total Mudarris</div>
                         <div class="h2 m-b-sm">{{ $murobbi }}</div>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <div>Total Halaqah</div>
+                        <div>Total Kelompok Dirosa</div>
                         <div class="h2 m-b-sm">{{ $halaqah }}</div>
                     </div>
                 </div>

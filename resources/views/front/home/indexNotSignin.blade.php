@@ -28,7 +28,6 @@
                                     </span>
                                     <span class="clear">
                                         <span>{{ $h->name }} - {{ $h->murobbi->name }}</span>
-                                        <span class="pull-right label bg-primary inline m-t-sm">0 km</span>
                                         <small class="text-muted clear text-ellipsis">{{ $h->day }} - {{ $h->hour }}</small>
                                         <small class="text-muted clear text-ellipsis">Tingkatan {{ $h->tiers }}</small>
                                     </span>

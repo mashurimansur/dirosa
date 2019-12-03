@@ -3,7 +3,7 @@
 @section('content')
     <a href="{{ route('halaqah.create') }}" class="new-btn" title="Tambah Halaqah"><i class="glyphicon glyphicon-pencil"></i></a>
     <div class="bg-light lter b-b wrapper-md">
-        <h1 class="m-n font-thin h3">Halaqah</h1>
+        <h1 class="m-n font-thin h3">Kelompok Dirosa</h1>
     </div>
 
     <div class="wrapper-md">
@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Halaqah</th>
+                            <th>Nama Kelompok</th>
                             <th>Tingkatan</th>
                             <th>Hari Dirosa</th>
                             <th>Waktu Dirosa</th>

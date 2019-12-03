@@ -27,18 +27,18 @@
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span>Navigation</span>
                     </li>
-                    <li {{ Request::is('murobbi/dashboard') ? 'class=active' : '' }}>
+                    <li {{ Request::is('mudarris/dashboard') ? 'class=active' : '' }}>
                         <a href="{{ route('dashboard.index') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
                             <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li {{ Request::is('murobbi/halaqah*') ? 'class=active' : '' }}>
+                    <li {{ Request::is('mudarris/halaqah*') ? 'class=active' : '' }}>
                         <a href="{{ route('halaqah.index') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
                             <i class="glyphicon glyphicon-home icon text-info-lter"></i>
-                            <span>Halaqah</span>
+                            <span>Kelompok</span>
                         </a>
                     </li>
                     <li class="line dk"></li>
@@ -47,7 +47,7 @@
                         <span>Kader</span>
                     </li>
 
-                    <li {{ Request::is('murobbi/kader/user') ? 'class=active' : '' }}>
+                    <li {{ Request::is('mudarris/kader/user') ? 'class=active' : '' }}>
                         <a href="{{ route('kader.kader') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
                             <i class="glyphicon glyphicon-user icon text-primary-lter"></i>
@@ -55,11 +55,11 @@
                         </a>
                     </li>
 
-                    <li {{ Request::is('murobbi/kader/murobbi') ? 'class=active' : '' }}>
+                    <li {{ Request::is('mudarris/kader/murobbi') ? 'class=active' : '' }}>
                         <a href="{{ route('kader.murobbi') }}">
                             {{-- <b class="badge bg-info pull-right">9</b> --}}
                             <i class="glyphicon glyphicon-user icon text-success-lter"></i>
-                            <span>Data Murobbi</span>
+                            <span>Data Mudarris</span>
                         </a>
                     </li>
 
@@ -69,7 +69,7 @@
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span>Setting</span>
                     </li>
-                    <li {{ Request::is('murobbi/profile') ? 'class=active' : '' }}>
+                    <li {{ Request::is('mudarris/profile') ? 'class=active' : '' }}>
                         <a href="{{ route('profile.edit') }}">
                             <i class="icon-user icon text-success-lter"></i>
                             {{-- <b class="badge bg-success pull-right">30%</b> --}}
