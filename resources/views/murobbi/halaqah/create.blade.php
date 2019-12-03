@@ -74,7 +74,7 @@
                                 <input type="date" name="end_registration" class="form-control">
                             </div>
 
-                            <div class="row hide">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="latitude" class="control-label">{{ __('outlet.latitude') }}</label>

@@ -35,6 +35,12 @@
                             @endforeach
                         </div>
                     </div>
+
+                    <div class="text-center m-t-lg m-b-lg">
+                        <ul class="pagination pagination-md">
+                            {{ $halaqah->render() }}
+                        </ul>
+                    </div>
                 </div>
                 <!-- / tasks -->
             </div>

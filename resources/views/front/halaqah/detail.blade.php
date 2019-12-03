@@ -2,28 +2,28 @@
 
 @section('content')
 <div class="bg-light lter b-b wrapper-md">
-    <h1 class="m-n font-thin h3">Detail Halaqah</h1>
+    <h1 class="m-n font-thin h3">Detail Kelompok Dirosa</h1>
 </div>
 
 <div class="wrapper-md" ng-controller="FormDemoCtrl">
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default">
-                <div class="panel-heading font-bold">Detail Halaqah</div>
+                <div class="panel-heading font-bold">Detail Kelompok Dirosa</div>
                 <div class="panel-body">
                     <table class="table table-striped m-b-none">
                         <tbody>
                             <tr>
-                                <th>Nama Halaqah :</th>
+                                <th>Nama Kelompok :</th>
                                 <td>{{ $halaqah->name }}</td>
                             </tr>
                             <tr>
-                                <th>Nama Murobbi :</th>
+                                <th>Nama Mudarris :</th>
                                 <td>{{ $halaqah->murobbi->name }}</td>
                             </tr>
                             <tr>
                                 <th>No. Telepon :</th>
-                                <td>{{ $halaqah->murobbi->phone }}</td>
+                                <td><a href="https://wa.me/{{ $halaqah->murobbi->phone }}" target="_blank">{{ $halaqah->murobbi->phone }}</a></td>
                             </tr>
                             <tr>
                                 <th>Hari / Jam :</th>
@@ -34,7 +34,7 @@
                                 <td>{{ count($halaqah->users) }}</td>
                             </tr>
                             <tr>
-                                <th>Jarak :</th>
+                                <th>Jarak dari lokasi Anda :</th>
                                 <td id="jarak"></td>
                             </tr>
                             <tr>
@@ -52,6 +52,7 @@
                         @if ($check > 0)
                             <div class="wrapper bg-white">
                                 <button class="btn btn-success btn-sm">Anda telah bergabung</button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-quit">Keluar dari kelompok ini</button>
                             </div>
                         @else
                             <div class="wrapper bg-white">
@@ -117,11 +118,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Hapus Halaqah</h4>
+                    <h4 class="modal-title" id="myModalLabel">Bergabung di Kelompok</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="id">
-                    Apakah anda ingin bergabung di halaqah ini?
+                    Apakah anda ingin bergabung di kelompok Dirosa ini?
                 </div>
                 <div class="modal-footer">
                     <form action="{{ route('front.halaqah.join') }}" method="POST">
@@ -134,6 +135,29 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal-quit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Keluar Kelompok</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id">
+                        Apakah anda ingin keluar dari kelompok Dirosa ini?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ route('front.halaqah.out') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="halaqah_id" value="{{ $halaqah->id }}">
+                            <button class="btn btn-danger">Ya</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endsection
 
     @push('scripts')

@@ -139,7 +139,7 @@
                 }).addTo(map);
 
             listVisit.map((item, index) => {
-                $('#tableListVisit thead tr').append(`<th>${item.name}</th>`);
+                $('#tableListVisit thead tr').append(`<th><a href="">${item.name}</a></th>`);
                 $('#tableListVisit tbody').append(`<tr><td><b>${item.name}</b></td></tr>`);
                 listVisit.map(item2 => {
                     let distance = map.distance({

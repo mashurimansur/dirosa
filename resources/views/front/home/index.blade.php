@@ -28,13 +28,19 @@
                                     </span>
                                     <span class="clear">
                                         <span>{{ $h->name }} - {{ $h->murobbi->name }}</span>
-                                        <span class="pull-right label bg-primary inline m-t-sm">0 km</span>
+                                        {{-- <span class="pull-right label bg-primary inline m-t-sm">0 km</span> --}}
                                         <small class="text-muted clear text-ellipsis">{{ $h->day }} - {{ $h->hour }}</small>
                                         <small class="text-muted clear text-ellipsis">Tingkatan {{ $h->tiers }}</small>
                                     </span>
                                 </a>
                             @endforeach
                         </div>
+                    </div>
+
+                    <div class="text-center m-t-lg m-b-lg">
+                        <ul class="pagination pagination-md">
+                            {{ $halaqah->render() }}
+                        </ul>
                     </div>
                 </div>
                 <!-- / tasks -->

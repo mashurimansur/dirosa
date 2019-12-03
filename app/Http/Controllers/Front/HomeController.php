@@ -13,51 +13,20 @@ class HomeController extends Controller
 {
     public function index(){
         if (Auth::guest()){
-            $data['halaqah'] = Halaqah::with('murobbi')->get();
+            $data['halaqah'] = Halaqah::with('murobbi')
+                ->where('start_registration', '<=', date('Y-m-d'))
+                ->where('end_registration', '>=', date('Y-m-d'))
+                ->paginate(10);
             return view('front.home.indexNotSignin', $data);
 
         } else {
-            $halaqah = Halaqah::with('murobbi')
-                // ->where('start_registration', '>=', date('Y-m-d'))
-                // ->where('end_registration', '<=', date('Y-m-d'))
-                ->get();
+            $data['halaqah'] = Halaqah::with('murobbi')
+                ->where('start_registration', '<=', date('Y-m-d'))
+                ->where('end_registration', '>=', date('Y-m-d'))
+                ->paginate(10);
 
-            // $data['halaqah'] = [];
-            foreach ($halaqah as $h) {
-                $data['halaqah'][] = [
-                    'id'                 => $h->id,
-                    'name'               => $h->name,
-                    'gender'             => $h->gender,
-                    'user_id'            => $h->user_id,
-                    'tiers'              => $h->tiers,
-                    'day'                => $h->day,
-                    'hour'               => $h->hour,
-                    'location'           => $h->location,
-                    'latitude'           => $h->latitude,
-                    'longitude'          => $h->longitude,
-                    'start_registration' => $h->start_registration,
-                    'end_registration'   => $h->end_registration,
-                    'murobbi'            => $h->murobbi,
-                    'distance'           => $this->getDistance(Auth::user()->latitude, Auth::user()->longitude, $h->latitude, $h->longitude)
-                ];
-            };
-
-
-            $data['halaqah'] = $halaqah;
             return view('front.home.index', $data);
         }
-    }
-
-    public function getDistance($lat1, $lon1, $lat2, $lon2) {
-        $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-                $dist = acos($dist);
-                $dist = rad2deg($dist);
-                $miles= $dist * 60 * 1.1515;
-                $unit = 'K';
-                $km   = $miles*1.609344;
-                $data =  number_format($km,1);
-        return $data;
     }
 
     public function filter()
@@ -74,8 +43,8 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
 
-        $data['user'] = User::where('id', Auth::user()->id)->with('halaqah')->first();
-
+        $data['user'] = User::where('id', Auth::user()->id)->with('halaqah.murobbi')->first();
+        // return response()->json($data, 200);
         return view('front.halaqah.index', $data);
     }
 
@@ -162,6 +131,17 @@ class HomeController extends Controller
         $hu->save();
 
         return redirect()->back();
+    }
 
+    public function outHalaqah(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'halaqah_id' => 'required'
+        ]);
+
+        HalaqahUser::where('user_id', $request->user_id)->where('halaqah_id', $request->halaqah_id)->delete();
+
+        return redirect()->back();
     }
 }

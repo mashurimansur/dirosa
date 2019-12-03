@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Front'], function () {
     Route::get('/halaqah', 'HomeController@halaqah')->name('front.halaqah');
     Route::get('/halaqah/{id?}', 'HomeController@detailHalaqah')->name('front.halaqah.detail');
     Route::post('halaqah/join', 'HomeController@joinHalaqah')->name('front.halaqah.join');
+    Route::post('halaqah/out', 'HomeController@outHalaqah')->name('front.halaqah.out');
     Route::get('/register/murobbi', 'HomeController@registerMurobbi')->name('register.murobbi');
 
     //About

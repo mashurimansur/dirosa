@@ -67,8 +67,8 @@
                     </li>
                     <li>
                         <a href="{{ route('front.halaqah') }}">
-                            <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                            <span class="font-bold">Halaqah</span>
+                            <i class="glyphicon glyphicon-bookmark icon text-info-lter"></i>
+                            <span class="font-bold">Kelompok Dirosa</span>
                         </a>
                     </li>
                     <li class="line dk"></li>
