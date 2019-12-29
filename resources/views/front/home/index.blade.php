@@ -89,7 +89,7 @@
 
                                 <div class="form-group" id="timeDisplay">
                                     <label>Waktu Dirosa</label>
-                                    <select name="hour" id="time">
+                                    <select name="hour" id="time" class="form-control">
 
                                     </select>
                                     {{-- <input type="time" name="hour" class="form-control" placeholder="Waktu Dirosa"> --}}
@@ -108,16 +108,18 @@
 
 @push('scripts')
     <script type="text/javascript">
+        $("#timeDisplay").hide();
         $('#day').change(function(){
             var dayID = $(this).val();
             if(dayID){
+                $("#timeDisplay").show();
                 $.ajax({
                 type:"GET",
                 url:"{{url('api/halaqah/time')}}"+"/"+dayID,
                 success:function(res){
                     if(res){
                         $("#time").empty();
-                        $("#time").append('<option>Select</option>');
+                        $("#time").append('<option>Semua Jam</option>');
                         $.each(res,function(key,value){
                         $("#time").append('<option value="'+value.hour+'">'+value.hour+'</option>');
                     });
@@ -127,7 +129,7 @@
                 }
             });
             }else{
-                // $("#time").hide();
+                $("#time").empty();
                 $("#timeDisplay").hide();
             }
         });
