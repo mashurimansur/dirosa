@@ -21,4 +21,5 @@ Route::group(['as' => 'api.', 'namespace' => 'Api'], function () {
     // Halaqah Endpoints
     Route::get('halaqah', 'HalaqahController@getData')->name('halaqah.index');
     Route::get('halaqah/filter', 'HalaqahController@getFilter')->name('halaqah.filter');
+    Route::get('halaqah/time/{id}', 'HalaqahController@getTime')->name('halaqah.get.time');
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\HalaqahResource;
 use App\Models\Halaqah;
 use Illuminate\Http\Request;
+use DB;
 
 class HalaqahController extends Controller
 {
@@ -58,5 +59,10 @@ class HalaqahController extends Controller
         $halaqah = $halaqah->limit(10)->get();
 
         return response()->json($halaqah, 200);
+    }
+
+    public function getTime($day) {
+        $time = Halaqah::where('day', $day)->select(DB::raw('hour'), DB::raw('count(hour)'))->groupBy(DB::raw('hour'))->get();
+        return response()->json($time);
     }
 }

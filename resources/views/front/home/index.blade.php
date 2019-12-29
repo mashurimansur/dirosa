@@ -30,7 +30,7 @@
                                         <span>{{ $h->name }} - {{ $h->murobbi->name }}</span>
                                         {{-- <span class="pull-right label bg-primary inline m-t-sm">0 km</span> --}}
                                         <small class="text-muted clear text-ellipsis">{{ $h->day }} - {{ $h->hour }}</small>
-                                        <small class="text-muted clear text-ellipsis">Tingkatan {{ $h->tiers }}</small>
+                                        <small class="text-muted clear text-ellipsis">Kelompok {{ $h->tiers }}</small>
                                     </span>
                                 </a>
                             @endforeach
@@ -50,54 +50,86 @@
         <!-- right col -->
         <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
             <div>
-                    <div class="panel panel-default">
-                            <div class="panel-heading font-bold">Filter with Algoritma <br>Floyd Warshall</div>
-                            <div class="panel-body">
-                                <form role="form" method="GET" action="{{ route('front.filter') }}">
-                                    {{ csrf_field() }}
-                                    <div class="form-group">
-                                        <label>Tingkatan</label>
-                                        <select name="tiers" id="" class="form-control">
-                                            <option value="">Semua Tingkatan</option>
-                                            <option value="pemula">Pemula</option>
-                                            <option value="menengah">Menengah</option>
-                                            <option value="mahir">Mahir</option>
-                                        </select>
-                                    </div>
+                <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Filter with Algoritma <br>Floyd Warshall</div>
+                        <div class="panel-body">
+                            <form role="form" method="GET" action="{{ route('front.filter') }}">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label>Tingkatan</label>
+                                    <select name="tiers" id="" class="form-control">
+                                        <option value="">Semua Tingkatan</option>
+                                        <option value="pemula">Pemula</option>
+                                        <option value="menengah">Menengah</option>
+                                        <option value="mahir">Mahir</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label>Jenis Kelamin</label>
-                                        <select name="gender" id="" class="form-control">
-                                            <option value="l">Laki-Laki</option>
-                                            <option value="p">Perempuan</option>
-                                        </select>
-                                    </div>
+                                {{-- <div class="form-group">
+                                    <label>Jenis Kelamin</label>
+                                    <select name="gender" id="" class="form-control">
+                                        <option value="l">Laki-Laki</option>
+                                        <option value="p">Perempuan</option>
+                                    </select>
+                                </div> --}}
 
-                                    <div class="form-group">
-                                        <label>Hari</label>
-                                        <select name="day" id="" class="form-control">
-                                            <option value="">Semua Hari</option>
-                                            <option value="Senin">Senin</option>
-                                            <option value="Selasa">Selasa</option>
-                                            <option value="Rabu">Rabu</option>
-                                            <option value="Kamis">Kamis</option>
-                                            <option value="Jumat">Jumat</option>
-                                            <option value="Sabtu">Sabtu</option>
-                                            <option value="Minggu">Minggu</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Hari</label>
+                                    <select name="day" id="day" class="form-control">
+                                        <option value="">Semua Hari</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                        <option value="Rabu">Rabu</option>
+                                        <option value="Kamis">Kamis</option>
+                                        <option value="Jumat">Jumat</option>
+                                        <option value="Sabtu">Sabtu</option>
+                                        <option value="Minggu">Minggu</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label>Waktu Dirosa</label>
-                                        <input type="time" name="hour" class="form-control" placeholder="Waktu Dirosa">
-                                    </div>
+                                <div class="form-group" id="timeDisplay">
+                                    <label>Waktu Dirosa</label>
+                                    <select name="hour" id="time">
 
-                                    <button type="submit" class="btn btn-sm btn-primary">Filter</button>
-                                </form>
-                            </div>
+                                    </select>
+                                    {{-- <input type="time" name="hour" class="form-control" placeholder="Waktu Dirosa"> --}}
+                                </div>
+
+                                <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+                            </form>
                         </div>
+                    </div>
+                </div>
             </div>
         </div>
     <!-- / right col -->
     </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $('#day').change(function(){
+            var dayID = $(this).val();
+            if(dayID){
+                $.ajax({
+                type:"GET",
+                url:"{{url('api/halaqah/time')}}"+"/"+dayID,
+                success:function(res){
+                    if(res){
+                        $("#time").empty();
+                        $("#time").append('<option>Select</option>');
+                        $.each(res,function(key,value){
+                        $("#time").append('<option value="'+value.hour+'">'+value.hour+'</option>');
+                    });
+                    }else{
+                        $("#time").empty();
+                    }
+                }
+            });
+            }else{
+                // $("#time").hide();
+                $("#timeDisplay").hide();
+            }
+        });
+    </script>
+@endpush

@@ -7,6 +7,7 @@ use App\Models\Halaqah;
 use App\Models\HalaqahUser;
 use App\Models\User;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

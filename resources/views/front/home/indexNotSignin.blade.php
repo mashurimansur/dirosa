@@ -29,7 +29,7 @@
                                     <span class="clear">
                                         <span>{{ $h->name }} - {{ $h->murobbi->name }}</span>
                                         <small class="text-muted clear text-ellipsis">{{ $h->day }} - {{ $h->hour }}</small>
-                                        <small class="text-muted clear text-ellipsis">Tingkatan {{ $h->tiers }}</small>
+                                        <small class="text-muted clear text-ellipsis">Kelompok {{ $h->tiers }}</small>
                                     </span>
                                 </a>
                             @endforeach
