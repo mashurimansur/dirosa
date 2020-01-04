@@ -65,14 +65,6 @@
                                     </select>
                                 </div>
 
-                                {{-- <div class="form-group">
-                                    <label>Jenis Kelamin</label>
-                                    <select name="gender" id="" class="form-control">
-                                        <option value="l">Laki-Laki</option>
-                                        <option value="p">Perempuan</option>
-                                    </select>
-                                </div> --}}
-
                                 <div class="form-group">
                                     <label>Hari</label>
                                     <select name="day" id="day" class="form-control">
@@ -95,6 +87,11 @@
                                     {{-- <input type="time" name="hour" class="form-control" placeholder="Waktu Dirosa"> --}}
                                 </div>
 
+                                <div class="form-group" id="timeDisplay">
+                                    <label>Total Kelompok yg Ingin Ditampilkan</label>
+                                    <input type="number" name="total" class="form-control" value="10" step="10" max="100">
+                                </div>
+
                                 <button type="submit" class="btn btn-sm btn-primary">Filter</button>
                             </form>
                         </div>
@@ -114,21 +111,22 @@
             if(dayID){
                 $("#timeDisplay").show();
                 $.ajax({
-                type:"GET",
-                url:"{{url('api/halaqah/time')}}"+"/"+dayID,
-                success:function(res){
-                    if(res){
-                        $("#time").empty();
-                        $("#time").append('<option>Semua Jam</option>');
-                        $.each(res,function(key,value){
-                        $("#time").append('<option value="'+value.hour+'">'+value.hour+'</option>');
-                    });
-                    }else{
-                        $("#time").empty();
+                    type:"GET",
+                    url:"{{url('api/halaqah/time')}}"+"/"+dayID,
+                    success:function(res){
+                        if(res.length > 0){
+                            $("#time").empty();
+                            $("#time").append('<option>Semua Jam</option>');
+                            $.each(res,function(key,value){
+                            $("#time").append('<option value="'+value.hour+'">'+value.hour+'</option>');
+                        });
+                        } else {
+                            $("#time").empty();
+                            $("#timeDisplay").hide();
+                        }
                     }
-                }
-            });
-            }else{
+                });
+            } else {
                 $("#time").empty();
                 $("#timeDisplay").hide();
             }

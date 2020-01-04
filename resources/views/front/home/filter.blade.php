@@ -84,7 +84,7 @@
         // let map = L.map('mapid').set;
 
         // const url = 'http://dirosa.gg/api/halaqah/filter';
-        const url = "{{ route('api.halaqah.filter') }}" + "?gender={{ Request::input('gender') }}&tiers={{ Request::input('tiers') }}&day={{ Request::input('day') }}&hour={{ Request::input('hour') }}";
+        const url = "{{ route('api.halaqah.filter') }}" + "?total={{ Request::input('total') }}&tiers={{ Request::input('tiers') }}&day={{ Request::input('day') }}&hour={{ Request::input('hour') }}";
         // console.log(cek)
         // const url = "{{ route('api.halaqah.filter') }}";
         fetch(url)
