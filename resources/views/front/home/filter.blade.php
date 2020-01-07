@@ -1,16 +1,6 @@
 @extends('front.layouts.main')
 
 @section('content')
-    @php
-        foreach($halaqah as $h) {
-            $hasil[] = [
-                'name' => $h->name,
-                'latitude' => (float)$h->latitude,
-                'longitude' => (float)$h->longitude
-            ];
-        }
-    @endphp
-
     <div class="row">
         <div class="col-md-12">
             <div id="mapid"></div>
@@ -66,8 +56,6 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"/>
 
-
-
     <style>
         #mapid { height: 700px; }
     </style>
@@ -81,12 +69,8 @@
 
     <script>
         let map = L.map('mapid').setView([{{ Auth::user()->latitude }}, {{ Auth::user()->longitude }}], 14);
-        // let map = L.map('mapid').set;
 
-        // const url = 'http://dirosa.gg/api/halaqah/filter';
         const url = "{{ route('api.halaqah.filter') }}" + "?total={{ Request::input('total') }}&tiers={{ Request::input('tiers') }}&day={{ Request::input('day') }}&hour={{ Request::input('hour') }}";
-        // console.log(cek)
-        // const url = "{{ route('api.halaqah.filter') }}";
         fetch(url)
         .then(response => {
             return response.json()
@@ -234,6 +218,4 @@
         })
 
     </script>
-
-
 @endpush
